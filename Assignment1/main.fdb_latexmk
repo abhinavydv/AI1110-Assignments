@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1648470861 "/home/abhinav/Abhinav/Study/Sem2/ProbabilityAndRandomVariables-AI1110/Assignments/Assignment1/cs21btech11002_assig_1.tex" "/home/abhinav/Abhinav/Study/Sem2/ProbabilityAndRandomVariables-AI1110/Assignments/Assignment1/cs21btech11002_assig_1.pdf" "cs21btech11002_assig_1" 1648470861
+["pdflatex"] 1648477469 "/home/abhinav/Abhinav/Study/AI1110-Assignments/Assignment1/main.tex" "/home/abhinav/Abhinav/Study/AI1110-Assignments/Assignment1/main.pdf" "main" 1648477469
   "/etc/texmf/web2c/texmf.cnf" 1648453759 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/abhinav/Abhinav/Study/Sem2/ProbabilityAndRandomVariables-AI1110/Assignments/Assignment1/cs21btech11002_assig_1.aux" 1648470861 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
-  "/home/abhinav/Abhinav/Study/Sem2/ProbabilityAndRandomVariables-AI1110/Assignments/Assignment1/cs21btech11002_assig_1.tex" 1648470861 1139 97169bae074ba097ba847264d1e30789 ""
-  "/home/abhinav/Abhinav/Study/Sem2/ProbabilityAndRandomVariables-AI1110/Assignments/Assignment1/images/q11_b.png" 1648463433 18739 1356b9eb8cfd25230042214155a14326 ""
+  "/home/abhinav/Abhinav/Study/AI1110-Assignments/Assignment1/images/q11_b.png" 1648463433 18739 1356b9eb8cfd25230042214155a14326 ""
+  "/home/abhinav/Abhinav/Study/AI1110-Assignments/Assignment1/main.aux" 1648477469 8 a94a2480d3289e625eea47cd1b285758 "pdflatex"
+  "/home/abhinav/Abhinav/Study/AI1110-Assignments/Assignment1/main.tex" 1648470861 1139 97169bae074ba097ba847264d1e30789 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -56,6 +56,6 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1648453765 75955 f78456fd1308dc295dc476a68e28d85b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1648453767 4791332 2787123f4efdd7d0703c47bc9da28c78 ""
   (generated)
-  "/home/abhinav/Abhinav/Study/Sem2/ProbabilityAndRandomVariables-AI1110/Assignments/Assignment1/cs21btech11002_assig_1.aux"
-  "/home/abhinav/Abhinav/Study/Sem2/ProbabilityAndRandomVariables-AI1110/Assignments/Assignment1/cs21btech11002_assig_1.pdf"
-  "/home/abhinav/Abhinav/Study/Sem2/ProbabilityAndRandomVariables-AI1110/Assignments/Assignment1/cs21btech11002_assig_1.log"
+  "/home/abhinav/Abhinav/Study/AI1110-Assignments/Assignment1/main.aux"
+  "/home/abhinav/Abhinav/Study/AI1110-Assignments/Assignment1/main.pdf"
+  "/home/abhinav/Abhinav/Study/AI1110-Assignments/Assignment1/main.log"
