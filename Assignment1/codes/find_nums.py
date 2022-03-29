@@ -42,7 +42,7 @@ def plot(coeffs, roots):
 
     points = [(0, 0), *[(i, 0) for i in roots]]
     for i in points:
-        plt.annotate(str(i), i)
+        plt.annotate(str(i), i, xytext=(i[0]+0.5, i[1]+20))
 
     plt.savefig("../images/plot.png")
 
