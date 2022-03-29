@@ -21,31 +21,27 @@ def find_consecutive_nums(multiple_of, product):
         and whose product is `product`
     """
 
-    if product <= 0 or multiple_of<=0:
-        return 0, 0
-
     temp = product/multiple_of**2
     n = floor(sqrt(temp))
-
-    if n*(n+1) != temp:
-        return 0, 0
 
     return multiple_of*n, multiple_of*(n+1)
 
 
 if __name__ == "__main__":
-    multiple_of = 5
-    product = 750
+    multiple_of = 3
+    product = 810
     n1, n2 = find_consecutive_nums(multiple_of, product)
 
-    if n1:
+    try:
+        # Verification
+        assert n1%multiple_of == 0 and n2%multiple_of == 0
+        assert n2-n1 == multiple_of
+        assert n1*n2 == product
         print(
             f"The consecutive natural numbers n1 and n2 s.t.\n"
             f"n1 % {multiple_of} == 0  and  n2 % {multiple_of} == 0 and n1*n2 == {product} are:\n"
             f"{n1=}\t{n2=}"
         )
-    else:
-        print(
-            f"No consecutive natural numbers n1 and n2 found s.t.\n"
-            f"n1 % {multiple_of} == 0  and  n2 % {multiple_of} == 0 and n1*n2 == {product}"
-        )
+    except AssertionError:
+        # if verification failed
+        print("No such numbers found")
