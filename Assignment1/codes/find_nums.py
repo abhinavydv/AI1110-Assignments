@@ -25,7 +25,7 @@ def plot(coeffs, roots):
 
         Parameters
         ----------
-        `coeffs`: An array of coefficients of polynomial
+        `coeffs`: An array of coefficients of polynomial in increasing degree of the variable
         `roots`: An array of roots of polynomial
     """
 
@@ -34,6 +34,7 @@ def plot(coeffs, roots):
 
     temp = [coeffs[i]*x**i for i in range(len((coeffs)))]
     y = array(list(map(my_sum, *temp)))
+    plt.grid()
     plt.plot(x, y)
     plt.plot(x, x_axis, color="black")  # x-axis
 
