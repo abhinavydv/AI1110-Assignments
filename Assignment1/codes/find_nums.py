@@ -19,6 +19,24 @@ def my_sum(*args):
     return s
 
 
+def mark_points(points, marker='o', markersize=5, color='black'):
+    """
+    Marks the given points on the plot and annotates its coordinates
+
+    Parameters
+    ----------
+    `points`: list of two-tuples to be marked
+    `marker`: marker to use
+    `markersize`: size of the marker
+    `color`: color of the marker
+    """
+
+    for i in points:
+        plt.plot(i[0], i[1], marker=marker, markersize=markersize, color=color)
+        plt.annotate(str(i), i, xytext=(i[0]+0.5, i[1]+20))
+
+
+
 def plot(coeffs, roots):
     """
         Plots the given polynomial so that all roots are covered.
@@ -42,11 +60,9 @@ def plot(coeffs, roots):
     plt.plot(x_axis, y_axis, color="black")
 
     points = [(0, 0), *[(i, 0) for i in roots]]
-    for i in points:
-        plt.annotate(str(i), i, xytext=(i[0]+0.5, i[1]+20))
+    mark_points(points)
 
-    plt.savefig("../images/plot.png")
-
+    plt.savefig("../figs/plot.png")
     plt.show()
 
 
