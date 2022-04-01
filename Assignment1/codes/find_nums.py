@@ -9,16 +9,6 @@ from numpy import array, linspace, roots, round, zeros
 import matplotlib.pyplot as plt
 
 
-def my_sum(*args):
-    """
-    Returns sum of the provided arguments
-    """
-    s = 0
-    for i in args:
-        s += i
-    return s
-
-
 def mark_points(points, marker='o', markersize=5, color='black'):
     """
     Marks the given points on the plot and annotates its coordinates
@@ -36,7 +26,6 @@ def mark_points(points, marker='o', markersize=5, color='black'):
         plt.annotate(str(i), i, xytext=(i[0]+0.5, i[1]+20))
 
 
-
 def plot(coeffs, roots):
     """
         Plots the given polynomial so that all roots are covered.
@@ -51,7 +40,7 @@ def plot(coeffs, roots):
     x_axis = zeros(1000)
 
     temp = [coeffs[i]*x**i for i in range(len((coeffs)))]
-    y = array(list(map(my_sum, *temp)))
+    y = array(list(map(lambda *args: sum(args), *temp)))
     plt.grid()
     plt.plot(x, y)
     plt.plot(x, x_axis, color="black")  # x-axis
