@@ -1,5 +1,6 @@
 \documentclass[journal, 12pt, twocolumn]{IEEEtran}
 \usepackage[utf8]{inputenc}
+\usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -22,6 +23,7 @@
         &&3n(3n+3) &= 810\\
         &\implies & 9n(n+1) &= 810\\
         &\implies & n(n+1) &= 90\\
+        \label{eq4}
         &\implies & n^2+n-90 &= 0\hspace{25pt}\\
         &\implies & (n+10)(n-9) &= 0\\
         &\implies & n=-10 \hspace{15pt} &or \hspace{15pt} n=9
@@ -33,14 +35,14 @@
     The two numbers are:\vspace{200pt}
     \fbox{$27, 30$}\pagebreak
 
-    Plot of $eq^n(4)$ is:
+    Plot of \eqref{eq4} is:
     \begin{figure}[h]
         \centering
         \includegraphics[width=\columnwidth]{plot.png}
-        \caption{Plot showing the polynomial in $eq^n(4)$}
+        \caption{Plot showing the polynomial in \eqref{eq4}}
         \label{Fig1}
     \end{figure}\\
-    It can be easily verified by observing the plot that the roots of $eq^n (4)$ are 9 and -10.\\\\
+    It can be easily verified by observing the plot that the roots of \eqref{eq4} are 9 and -10.\\\\
 
     The output of the program used to find and verify these numbers is:
     \begin{figure}[h]
