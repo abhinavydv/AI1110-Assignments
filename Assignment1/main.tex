@@ -1,23 +1,23 @@
-\documentclass[journal, 12pt, twocolumn]{IEEEtran}
+\documentclass[journal, 11pt, twocolumn]{IEEEtran}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \graphicspath{{figs/}}
-\title{AI1110 Assignment 1}
+
+\font\twelve=cmr12 at 15pt
+\title{\twelve AI1110 Assignment 1}
 \author{Abhinav Yadav, cs21btech11002}
 
 \begin{document}
     \maketitle
-
-    \textbf{ICSE class 10 paper 2019}\\
-    \textbf{Q11 (b):}
+    \textbf{ICSE class 10 paper 2019 Q11 (b)}\\
     The product of two consecutive natural numbers which are multiples of 3 is 
     equal to 810. Find the two numbers.\\\\
     \textbf{Solution:}\\
     Let the two consecutive natural numbers which are multiples of $3$ be $3n$ and $3n+3$
-    \hspace{5pt} $\exists \hspace{2pt} n \in \mathbb{N}$\\\\
+    \hspace{5pt} $\exists \hspace{2pt} n \in \mathbb{N}$\\
     \textbf{According to the question:}
     \begin{align}
         &&3n(3n+3) &= 810\\
@@ -32,8 +32,8 @@
         &\implies & 3n &= 27\\
         &\implies & 3n+3 &= 30
     \end{align}
-    The two numbers are:\vspace{200pt}
-    \fbox{$27, 30$}\pagebreak
+    The two numbers are:
+    \fbox{$27, 30$}\\
 
     Plot of \autoref{eq4} is:
     \begin{figure}[h]
@@ -42,11 +42,12 @@
         \caption{Plot showing the polynomial in \autoref{eq4}}
         \label{Fig1}
     \end{figure}\\
-    It can be easily verified by observing the plot that the roots of \autoref{eq4} are 9 and -10.\\\\
+    It can be easily verified by observing the plot in \autoref{Fig1} that the roots of \autoref{eq4} are 9 and -10.\\
 
     The output of the program used to find and verify these numbers is:
     \begin{figure}[h]
         \includegraphics[width=\columnwidth]{output.png}
         \caption{Output of the python program}
+        \label{Fig2}
     \end{figure}
 \end{document}
