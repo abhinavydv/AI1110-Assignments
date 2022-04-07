@@ -107,7 +107,7 @@ int main(){
     if (!check)
         printf("No such numbers found.\n");
     else
-        printf("%d %d\n", num1, num2);
+        printf("The numbers are: \n%d %d\n", num1, num2);
 
     return 0;
 }

@@ -131,6 +131,7 @@ dmypy.json
 .asenv/
 Test/
 test/
+.vscode/
 
 *.aux
 *.fdb_latexmk
