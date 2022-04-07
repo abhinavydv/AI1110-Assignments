@@ -138,3 +138,6 @@ test/
 *.log
 *.synctex.gz
 
+# C binaries
+*.out
+*.o
