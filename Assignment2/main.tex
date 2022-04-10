@@ -107,8 +107,8 @@ columns=fullflexible
     The two lines can be expressed in vector form as
     \begin{align}
         \label{eq:line1}
-        \vec{r} & = \lambda \myvec{3 \\ 2 \\ -6}
-        \\
+        \vec{r} & = \lambda \myvec{3 \\ 2 \\ -6}\\
+        \label{eq:line2}
         \vec{r} & = \mu \myvec{2 \\ -12 \\ -3}
     \end{align}
 
@@ -118,7 +118,7 @@ columns=fullflexible
         \vec{n} = \myvec{2 \\ -12 \\ -3}
     \end{align}
 
-    \begin{figure}[h]
+    \begin{figure}[ht!]
         \includegraphics[width=\columnwidth]{figs/plot.png}
         \caption{3D plot showing the two lines}
         \label{fig:fig1}
@@ -126,10 +126,10 @@ columns=fullflexible
 
     The angle between the two lines is given by\\
     \begin{align}
-        \theta & = \cos^{-1}\frac{\vec{m}^{\top} \vec{n}}{\norm{\vec{m}} \norm{\vec{n}}})\\
-        \implies \theta & = \cos^{-1}\left(\frac{\myvec{3 & 2 & -6}^{\top} \myvec{2 \\ -12 \\ -3}}
-        {\norm{\myvec{3 \\ 2 \\ -6}} \norm{\myvec{2 \\ -12 \\ -3}}} \right)\\
-        \implies \theta & = \cos^{-1}(0)\\
+        \theta & = \arccos\brak{\frac{\vec{m}^{\top} \vec{n}}{\norm{\vec{m}} \norm{\vec{n}}}}\\
+        \implies \theta & = \arccos\brak{\frac{\myvec{3 & 2 & -6}^{\top} \myvec{2 \\ -12 \\ -3}}
+        {\norm{\myvec{3 \\ 2 \\ -6}} \norm{\myvec{2 \\ -12 \\ -3}}}}\\
+        \implies \theta & = \arccos(0)\\
         \implies \theta & = \frac{\pi}{2}
     \end{align}
 
