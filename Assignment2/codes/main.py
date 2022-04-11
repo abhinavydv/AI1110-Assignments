@@ -30,7 +30,7 @@ plt.savefig("../figs/plot.png")
 m = np.array([3, 2, -6])
 n = np.array([2, -12, -3])
 
-m_dot_n = np.dot(m, n)
+m_dot_n = m@n
 norm_m = la.norm(m)
 norm_n = la.norm(n)
 
