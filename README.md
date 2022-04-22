@@ -11,6 +11,8 @@ Assignments (Repo)
             └─── Codes (All python and C code goes here)  
             |    
             └─── Images (All images go here)  
+            |
+            └─── Tables (All tables created with ssconvert)  
             |  
             └─── main.pdf (The assignment pdf)  
             |  
