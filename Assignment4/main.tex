@@ -103,33 +103,30 @@ columns=fullflexible
     \maketitle
     \newpage
 
-    \question{[CBSE class 9 Exercise 14.1 Q2]}\\
-    Classify the data in \href{https://github.com/Ankit-Saha-2003/AI1110/blob/main/Assignment-3/main.pdf}{Q.1} 
-    above as primary or secondary data.\\
-
-    \solution\\
-    \noindent The classification of data\cite{AsData} (with abbreviation for ease of representation in plotting) is as follows:\\
- 
-    \begin{table}[ht!]
-        \input{tables/classification.tex}
-        \caption{Classification of data from \href{https://github.com/Ankit-Saha-2003/AI1110/blob/main/Assignment-3/main.pdf}{Q.1}}
-        \label{table:classification}
-    \end{table}
-
-    \noindent The scatter plot for the above classification is:
-    \begin{figure}[ht!]
-        \includegraphics[width=\columnwidth]{figs/plot.png}
+    \question{[CBSE class 9 Exercise 15.1 Q 7]}\\
+    To know the opinion of the students about the subject statistics, a survey of 200
+    students was conducted. The data is recorded in the following table.
+    \begin{table}[ht]
+        \input{tables/opinion.tex}
         \caption{}
-        \label{fig:plot}
-    \end{figure}
+    \end{table}\\
+    Find the probability that a student chosen at random\\
+    (i) Likes Statistics
+    
+    \solution\\
+    Let the opinion of the selected student be denoted by the random variable $X\in \{Like, Dislike\}$.\\
+    The desired probability is given by
+    \begin{align}
+        Pr(X=Like) &= \frac{135}{200} = \frac{27}{40}
+    \end{align}\\
+    
+    \noindent (ii) Does not like it\\
+    \solution\\
+    The desired probability is given by
+    \begin{align}
+        Pr(X=Dislike) = \frac{65}{200} = \frac{13}{40}
+    \end{align}
 
-
-    \begin{thebibliography}{1}
-
-        \bibitem{AsData}
-            \href{https://github.com/Ankit-Saha-2003/AI1110/blob/main/Assignment-3/main.pdf}
-                {https://github.com/Ankit-Saha-2003/AI1110/blob/main/Assignment-3/main.pdf}
-        
-    \end{thebibliography}
+    
 \end{document}
 
