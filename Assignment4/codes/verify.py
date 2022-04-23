@@ -1,9 +1,12 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
+
+df = pd.read_excel("../tables/opinion.xlsx")
+s = df["Number of Students"]
 
 # Opinion: Like = 1; Dislike = 0
-students = np.array([1]*135 + [0]*65)
+students = np.array([1]*s[0] + [0]*s[1])
 
 # perform the experiment multiple times (say 10000 times) to get probability
 t = 10000
