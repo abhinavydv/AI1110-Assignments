@@ -1,0 +1,67 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+% \usetheme{Frankfurt}
+% \usetheme{Darmstadt}
+% \usetheme{Berlin}
+% \usetheme{Warsaw}
+% \usetheme{Berkeley}
+% \usetheme{Bergen}
+% \usetheme{CambridgeUS}
+% \usetheme{Copenhagen}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\convolve}{\oplus}
+
+\title{AI1110 - Probability and Random Variables \\
+        Assignment 8}
+\author{Abhinav Yadav \\ 
+        cs21btech11002}
+
+\begin{document}
+    \maketitle
+    % \begin{frame}{Table of Contents}
+    %     \tableofcontents
+    % \end{frame}
+
+    \begin{frame}{Papoulis Chapter 4}
+        \section{Question}
+        \begin{block}{Q 4-30}
+            The probability that a driver will have an accident in 1 month equals 0.02. 
+            Find the probability that in 100 months he will have three accidents.
+        \end{block}
+    \end{frame}
+
+    \begin{frame}[allowframebreaks]{Solution}
+        \section{Solution}
+        \begin{block}{}
+            Let the event of accident be represented by a random variable X,
+            where X=0 represents that the driver will not have an accident and 
+            X=1 represents that the driver will have an accident.\\
+            Given,
+            \begin{align}
+                \Pr(X=0) = 0.98\\
+                \Pr(X=1) = 0.02
+            \end{align}
+            This distribution can be represented using a matrix as follows
+            \begin{align}
+                H = \myvec{0.98 \\ 0.02}
+            \end{align}
+            Let the number of accidents in 100 months be represented by $Y\in\cbrak{0, 1, 2, 3, ... 100}$.\\
+        \end{block}
+        
+        \begin{block}{}
+            
+            The matrix
+            \begin{align}
+                P = \myvec{\Pr(Y=0) \\ \Pr(Y=1) \\ \Pr(Y=2) \\ ... \\ \Pr(Y=100)}
+                \intertext{can be obtained by the following convolution}
+                P = Y \convolve Y \convolve Y \convolve .. Y (100 times)
+                \intertext{Using python for the above calculation, we get}
+                \Pr(Y=3) = 0.18227
+            \end{align}
+        \end{block}
+
+    \end{frame}
+\end{document}
