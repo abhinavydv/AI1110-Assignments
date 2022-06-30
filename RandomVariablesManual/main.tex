@@ -231,10 +231,16 @@ Let $U$ be a uniform random variable between 0 and 1.
 \begin{enumerate}[label=\thesection.\arabic*
         ,ref=\thesection.\theenumi]
     \item Generate $10^6$ samples of $U$ using a C program and save into a file called uni.dat .\\
-          \solution Downloaded the following files and executed the  C program.
+          \solution Download the following files.
           \begin{lstlisting}
-        wget https://github.com/gadepall/probability/raw/master/manual/codes/exrand.c
-        wget https://github.com/gadepall/probability/raw/master/manual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/uni_dat.c
+        \end{lstlisting}
+
+          Compile and execute the program as follows.
+          \begin{lstlisting}
+gcc exrand.c -lm -o exrand
+./exrand
         \end{lstlisting}
 
           %
