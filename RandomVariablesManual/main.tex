@@ -239,8 +239,8 @@ wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/Rand
 
           Compile and execute the program as follows.
           \begin{lstlisting}
-gcc exrand.c -lm -o exrand
-./exrand
+$ gcc uni_dat.c -lm -o uni_dat
+$ ./uni_dat
         \end{lstlisting}
 
           %
@@ -250,20 +250,45 @@ gcc exrand.c -lm -o exrand
               F_{U}(x) = \pr{U \le x}
           \end{align}
           \\
-          \solution  The following code plots Fig. \ref{fig:uni_cdf}
+          \solution  Download the following code
           \begin{lstlisting}
-wget https://github.com/gadepall/probability/raw/master/manual/codes/cdf_plot.py
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/cdf_plot_uni.py
+\end{lstlisting}
+          and run it as follows to get \autoref{fig:uni_cdf}
+          \begin{lstlisting}
+    $ python cdf_plot_uni.py
 \end{lstlisting}
           \begin{figure}
               \centering
-              %   \includegraphics[width=\columnwidth]{./figs/uni_cdf}
+              \includegraphics[width=\columnwidth]{./figs/uni_cdf}
               \caption{The CDF of $U$}
               \label{fig:uni_cdf}
           \end{figure}
 
           %
     \item
-          Find a  theoretical expression for $F_{U}(x)$.
+          Find a  theoretical expression for $F_{U}(x)$.\\
+          \solution
+          The pdf of U is given by
+          \begin{align}
+              P_U(x) & = \begin{cases}
+                  1, & 0 \le x \le 1    \\
+                  0, & \text{otherwise} \\
+              \end{cases}    \\
+              \intertext{Now,}
+              F_U(x) & = \int_{-\infty}^{x} P_U(t) dt \\
+              F_U(x) & = \begin{cases}
+                  \int_{-\infty}^{x} 0, & x < 0            \\
+                  \int_{0}^{x}1,        & 0 \le x \le 1    \\
+                  \int_0^11dx,          & \text{otherwise}
+              \end{cases}    \\
+              F_U(x) & = \begin{cases}
+                  0, & x < 0            \\
+                  x, & 0 \le x \le 1    \\
+                  1, & \text{otherwise}
+              \end{cases}
+          \end{align}
+
 
     \item
           The mean of $U$ is defined as
@@ -278,13 +303,37 @@ wget https://github.com/gadepall/probability/raw/master/manual/codes/cdf_plot.py
               \text{var}\sbrak{U} = E\sbrak{U- E\sbrak{U}}^2
           \end{equation}
 
-          Write a C program to  find the mean and variance of $U$.
+          Write a C program to  find the mean and variance of $U$.\\
+          \solution Download the following files.
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/mean_var_uni.c
+        \end{lstlisting}
+
+          Compile and execute the program as follows.
+          \begin{lstlisting}
+$ gcc mean_var_uni.c -lm -o mean_var_uni
+$ ./mean_var_uni
+        \end{lstlisting}
     \item Verify your result theoretically given that
 \end{enumerate}
 %
 \begin{equation}
     E\sbrak{U^k} = \int_{-\infty}^{\infty}x^kdF_{U}(x)
 \end{equation}
+\solution Integrating, we get
+\begin{align}
+    E[U^k]        & = \int_{-\infty}^{\infty}x^kP_U(x)dx      \\
+                  & = \int_{0}^1x^kdx                         \\
+                  & = \frac{1}{k+1}
+    \intertext{Now,}
+    E[U]          & = \frac{1}{2}                             \\
+    E[U^2]        & = \frac{1}{3}                             \\
+    E[(U-E(U))^2] & = E[(U-1/2)^2]                            \\
+                  & = E[U^2] + E(1/4) - 2E(\frac{U}{2})       \\
+                  & = \frac{1}{3} + \frac{1}{4} - \frac{1}{2} \\
+                  & = \frac{1}{12}
+\end{align}
 \section{Central Limit Theorem}
 %
 \begin{enumerate}[label=\thesection.\arabic*
@@ -299,19 +348,45 @@ wget https://github.com/gadepall/probability/raw/master/manual/codes/cdf_plot.py
           \end{equation}
           %
           using a C program, where $U_i, i = 1,2,\dots, 12$ are  a set of independent uniform random variables between 0 and 1
-          and save in a file called gau.dat
+          and save in a file called gau.dat\\
+          \solution Download the following files.
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/gau_dat.c
+        \end{lstlisting}
+
+          Compile and execute the program as follows.
+          \begin{lstlisting}
+$ gcc gau_dat.c -lm -o gau_dat
+$ ./gau_dat
+        \end{lstlisting}
+
 
           %
     \item
           Load gau.dat in python and plot the empirical CDF of $X$ using the samples in gau.dat. What properties does a CDF have?
           \\
-          \solution The CDF of $X$ is plotted in Fig. \ref{fig:gauss_cdf}
+          \solution  Download the following code
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/cdf_plot_gau.py
+\end{lstlisting}
+          and run it as follows to get \autoref{fig:gauss_cdf}
+          \begin{lstlisting}
+    $ python cdf_plot_gau
+\end{lstlisting}
           \begin{figure}
               \centering
-              %   \includegraphics[width=\columnwidth]{./figs/gauss_cdf}
+              \includegraphics[width=\columnwidth]{./figs/gauss_cdf}
               \caption{The CDF of $X$}
               \label{fig:gauss_cdf}
           \end{figure}
+          The properties of a CDF are:
+          \begin{itemize}
+              \item $0 \le F_X(x) \le 1$
+              \item $ \forall x \in (-\infty, \infty),  \frac{d}{dx}F_{X}(x) \ge 0$
+              \item $\forall a \in (-\infty, \infty)$, \[\lim_{x \to a^+} F_{X}(x) = F_X(a)\]
+          \end{itemize}
+
     \item
           Load gau.dat in python and plot the empirical PDF of $X$ using the samples in gau.dat. The PDF of $X$ is defined as
           \begin{align}
@@ -319,25 +394,67 @@ wget https://github.com/gadepall/probability/raw/master/manual/codes/cdf_plot.py
           \end{align}
           What properties does the PDF have?
           \\
-          \solution The PDF of $X$ is plotted in Fig. \ref{fig:gauss_pdf} using the code below
+          \solution  Download the following code
           \begin{lstlisting}
-wget https://github.com/gadepall/probability/raw/master/manual/codes/pdf_plot.py
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/pdf_plot_gau.py
+\end{lstlisting}
+          and run it as follows to get \autoref{fig:gauss_pdf}
+          \begin{lstlisting}
+    $ python pdf_plot_gau.py
 \end{lstlisting}
 
           \begin{figure}
               \centering
-              %   \includegraphics[width=\columnwidth]{./figs/gauss_pdf}
+              \includegraphics[width=\columnwidth]{./figs/gauss_pdf}
               \caption{The PDF of $X$}
               \label{fig:gauss_pdf}
           \end{figure}
 
-    \item Find the mean and variance of $X$ by writing a C program.
+          The PDF has following properties:
+          \begin{itemize}
+              \item $P_X(x) \ge 0, \forall x \in \mathbb{R}$
+              \item $\int_{-\infty}^\infty P_X(x) = 1$
+          \end{itemize}
+
+    \item Find the mean and variance of $X$ by writing a C program.\\
+          \solution Download the following files.
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/mean_var_gau.c
+  \end{lstlisting}
+
+          Compile and execute the program as follows.
+          \begin{lstlisting}
+$ gcc mean_var_gau.c -lm -o mean_var_gau
+$ ./mean_var_gau
+  \end{lstlisting}
+
     \item Given that
           \begin{align}
+              \label{eq:exp_dist_given}
               p_{X}(x) = \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x < \infty,
           \end{align}
-          repeat the above exercise theoretically.
-          %
+          repeat the above exercise theoretically.\\
+          \solution The mean is given by
+          \begin{align}
+              \mu & = E(X)                                                                       \\
+                  & =\int_{-\infty}^{\infty} x \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} dx \\
+                  & = \frac{1}{\sqrt{2\pi}} \times 0 = 0
+          \end{align}
+
+          Variance is given by
+          \begin{align}
+              \sigma^2 & = E(X^2)                                                                      \\
+                       & = \int_{-\infty}^\infty x^2 \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} dx \\
+                       & = 2\int_{0}^\infty x^2 \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} dx      \\
+              \intertext{substitute $t=\frac{x^2}{2}$ and $dt=xdx$}
+                       & = \frac{2}{\sqrt{2\pi}} \int_0^\infty\sqrt{2t}e^{-t}dt                        \\
+                       & = \frac{2}{\sqrt{\pi}} \Gamma \brak{\frac{3}{2}}                              \\
+                       & = \frac{2}{\sqrt{\pi}} \Gamma \brak{\frac{1}{2}} \frac{1}{2}                  \\
+              \intertext{put $\Gamma\brak{\frac{1}{2}} = \sqrt{\pi}$, we get}
+                       & = 1
+          \end{align}
+
 \end{enumerate}
 \section{From Uniform to Other}
 \begin{enumerate}[label=\thesection.\arabic*
@@ -350,8 +467,48 @@ wget https://github.com/gadepall/probability/raw/master/manual/codes/pdf_plot.py
               V = -2\ln\brak{1-U}
           \end{equation}
           %
-          and plot its CDF.
-    \item Find a theoretical expression for $F_V(x)$.
+          and plot its CDF.\\
+          \solution To generate samples of V download the following files.
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/exp_dat.c
+        \end{lstlisting}
+
+          and then compile and execute the program as follows.
+          \begin{lstlisting}
+$ gcc exp_dat.c -lm -o exp_dat
+$ ./exp_dat
+        \end{lstlisting}
+
+          To plot the CDF download the following code
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/cdf_plot_exp.py
+\end{lstlisting}
+          and run it as follows to get \autoref{fig:exp_cdf}
+          \begin{lstlisting}
+  $ python cdf_plot_exp.py
+\end{lstlisting}
+
+          \begin{figure}
+              \centering
+              \includegraphics[width=\columnwidth]{./figs/exp_cdf}
+              \caption{The PDF of $X$}
+              \label{fig:exp_cdf}
+          \end{figure}
+
+    \item Find a theoretical expression for $F_V(x)$.\\
+          \solution
+          \begin{align}
+              F_V(x) & = \pr{V \le x}                         \\
+                     & = \pr{-2\ln(1-U) \le x}                \\
+                     & = \pr{\ln(1-U) \le -\frac{x}{2}}       \\
+                     & = \pr{U \le 1-\exp\brak{-\frac{x}{2}}} \\
+                     & = F_U(1-\exp\brak{-\frac{x}{2}})       \\
+                     & = \begin{cases}
+                  0,                         & x<0     \\
+                  1-\exp\brak{-\frac{x}{2}}, & x \ge 0
+              \end{cases}
+          \end{align}
 
           %
           %\item
