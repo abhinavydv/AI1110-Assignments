@@ -315,6 +315,13 @@ wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/Rand
 $ gcc mean_var_uni.c -lm -o mean_var_uni
 $ ./mean_var_uni
         \end{lstlisting}
+
+          After running the program, we get,
+          \begin{align}
+              \mu = 0.500007 \\
+              \sigma = 0.083301
+          \end{align}
+
     \item Verify your result theoretically given that
 \end{enumerate}
 %
@@ -328,12 +335,14 @@ $ ./mean_var_uni
                   & = \frac{1}{k+1}
     \intertext{Now,}
     E[U]          & = \frac{1}{2}                             \\
+    \intertext{This agrees with the experimental value of 0.500007}
     E[U^2]        & = \frac{1}{3}                             \\
     E[(U-E(U))^2] & = E[(U-1/2)^2]                            \\
                   & = E[U^2] + E(1/4) - 2E(\frac{U}{2})       \\
                   & = \frac{1}{3} + \frac{1}{4} - \frac{1}{2} \\
                   & = \frac{1}{12}
 \end{align}
+This agrees with the experimental value 0.083301
 \section{Central Limit Theorem}
 %
 \begin{enumerate}[label=\thesection.\arabic*
@@ -429,6 +438,12 @@ $ gcc mean_var_gau.c -lm -o mean_var_gau
 $ ./mean_var_gau
   \end{lstlisting}
 
+          After running the program, we get,
+          \begin{align}
+              \mu = 0.000294 \\
+              \sigma = 0.999560
+          \end{align}
+
     \item Given that
           \begin{align}
               \label{eq:exp_dist_given}
@@ -444,14 +459,11 @@ $ ./mean_var_gau
 
           Variance is given by
           \begin{align}
-              \sigma^2 & = E(X^2)                                                                      \\
-                       & = \int_{-\infty}^\infty x^2 \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} dx \\
-                       & = 2\int_{0}^\infty x^2 \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} dx      \\
-              \intertext{substitute $t=\frac{x^2}{2}$ and $dt=xdx$}
-                       & = \frac{2}{\sqrt{2\pi}} \int_0^\infty\sqrt{2t}e^{-t}dt                        \\
-                       & = \frac{2}{\sqrt{\pi}} \Gamma \brak{\frac{3}{2}}                              \\
-                       & = \frac{2}{\sqrt{\pi}} \Gamma \brak{\frac{1}{2}} \frac{1}{2}                  \\
-              \intertext{put $\Gamma\brak{\frac{1}{2}} = \sqrt{\pi}$, we get}
+              \sigma^2 & = E(X^2)                                                                                                                                     \\
+                       & = \int_{-\infty}^\infty x\times x \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}} dx                                                          \\
+              \intertext{Integrating by parts, we get}
+                       & = \frac{1}{\sqrt{2\pi}} \brak{\left[-x\exp\brak{-\frac{x^2}{2}}\right]_{-\infty}^{\infty}+\int_{-\infty}^\infty \exp\brak{-\frac{x^2}{2}}dx} \\
+                       & = \frac{1}{\sqrt{2\pi}} \brak{0 + \sqrt{2\pi}}                                                                                               \\
                        & = 1
           \end{align}
 
@@ -492,7 +504,7 @@ wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/Rand
           \begin{figure}
               \centering
               \includegraphics[width=\columnwidth]{./figs/exp_cdf}
-              \caption{The PDF of $X$}
+              \caption{The PDF of $V$}
               \label{fig:exp_cdf}
           \end{figure}
 

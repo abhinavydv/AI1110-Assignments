@@ -283,7 +283,7 @@ void v_gen(char *str, int len)
     {
         v = -2 * log(1 - rand() * 1.0 / RAND_MAX);
 
-        fprintf(fp, "%lf\n", v - 6);
+        fprintf(fp, "%lf\n", v);
     }
     fclose(fp);
 }

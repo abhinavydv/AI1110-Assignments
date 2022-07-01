@@ -1,11 +1,18 @@
 # Importing numpy, scipy, mpmath and pyplot
 import numpy as np
 import matplotlib.pyplot as plt
+import mpmath
+from funcs import qfunc
+
 
 # if using termux
 #import subprocess
 #import shlex
 # end if
+
+
+def gau_cdf(x):
+    return 1-qfunc(x)
 
 
 x = np.linspace(-4, 4, 30)  # points on the x axis
@@ -20,11 +27,14 @@ for i in range(0, 30):
     err_n = np.size(err_ind)  # computing the probability
     err.append(err_n/simlen)  # storing the probability values in a list
 
+vec_gau_cdf = np.vectorize(gau_cdf)
 
-plt.plot(x.T, err)  # plotting the CDF
+plt.plot(x.T, err, "o")  # plotting the CDF
+plt.plot(x, vec_gau_cdf(x))
 plt.grid()  # creating the grid
 plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
+plt.legend(["Numerical", "Theory"])
 
 # if using termux
 # plt.savefig('../figs/uni_cdf.pdf')

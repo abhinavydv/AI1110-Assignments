@@ -5,8 +5,8 @@ import scipy
 import matplotlib.pyplot as plt
 
 # if using termux
-import subprocess
-import shlex
+# import subprocess
+# import shlex
 # end if
 
 
