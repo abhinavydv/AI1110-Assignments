@@ -159,6 +159,7 @@ text width=3em, text centered, minimum height=3em]
 \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
 \providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
 \providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\providecommand{\gauss}[2]{\mathcal{N}\ensuremath{\left(#1,#2\right)}}
 \theoremstyle{remark}
 \newtheorem{rem}{Remark}
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
@@ -527,6 +528,252 @@ wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/Rand
           %Generate the Rayleigh distribution from Uniform. Verify your result through graphical plots.
 \end{enumerate}
 
+\section{Triangular Distribution}
+\begin{enumerate}[label=\thesection.\arabic*
+        ,ref=\thesection.\theenumi]
+    %
+    \item Generate
+          \begin{align}
+              T = U_1+U_2
+          \end{align}
+          \solution
+          Download the following files.
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/tri_dat.c
+\end{lstlisting}
+
+          Compile and execute the program as follows.
+          \begin{lstlisting}
+$ gcc tri_dat.c -lm -o tri_dat
+$ ./tri_dat
+\end{lstlisting}
+
+
+    \item Find the CDF of $T$.\\
+          \solution  Download the following code
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/cdf_plot_tri.py
+\end{lstlisting}
+          and run it as follows to get \autoref{fig:tri_cdf}
+          \begin{lstlisting}
+    $ python cdf_plot_tri.py
+\end{lstlisting}
+          \begin{figure}
+              \centering
+              \includegraphics[width=\columnwidth]{./figs/tri_cdf}
+              \caption{The CDF of $T$}
+              \label{fig:tri_cdf}
+          \end{figure}
+
+    \item Find the PDF of $T$.\\
+          \solution  Download the following code
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/pdf_plot_tri.py
+\end{lstlisting}
+          and run it as follows to get \autoref{fig:tri_pdf}
+          \begin{lstlisting}
+$ python cdf_plot_tri.py
+\end{lstlisting}
+          \begin{figure}
+              \centering
+              \includegraphics[width=\columnwidth]{./figs/tri_pdf}
+              \caption{The PDF of $T$}
+              \label{fig:tri_pdf}
+          \end{figure}
+
+    \item Find the theoretical expressions for the PDF and CDF of $T$.\\
+          \solution We have,
+          \begin{align}
+              T = U_1 + U_2
+              \intertext{PDF can be found as follows}
+              f_T(t) & = f_{U_1+U_2}(t)                                            \\
+                     & = f_{U_1}(t)*f_{U_2}(t)                                     \\
+                     & = \int_{-\infty}^{\infty} f_{U_1}(\tau)f_{U_2}(t-\tau)d\tau \\
+                     & = \int_0^1f_{U_2}(t-\tau)d\tau                              \\
+                     & = \begin{cases}
+                  \int_0^1 0d\tau,   & t<0           \\
+                  \int_0^t 1 d\tau,  & 0 \le t \le 1 \\
+                  \int_{t-1}^1d\tau, & 1<t \le 2     \\
+                  \int_0^1 0d\tau,   & t>2
+              \end{cases}                                \\
+                     & = \begin{cases}
+                  t,   & 0 \le t \le 1    \\
+                  2-t, & 1 \le t \le 2    \\
+                  0,   & \text{otherwise}
+              \end{cases}
+              \intertext{Now, The CDF can be determined as follows,}
+              F_T(x) & = \int_{-\infty}^x f_T(t)dt                                 \\
+                     & = \begin{cases}
+                  0,                               & x<0          \\
+                  \int_0^x tdt,                    & 0\le x \le 1 \\
+                  \int_0^1 tdt + \int_1^x (2-t)dt, & 1 < x \le 2  \\
+                  1,                               & x>2          \\
+              \end{cases}                                \\
+                     & = \begin{cases}
+                  0,                  & x < 0         \\
+                  \frac{x^2}{2},      & 0 \le x \le 1 \\
+                  2x-\frac{x^2}{2}-1, & 1 < x \le 2   \\
+                  1,                  & x > 2
+              \end{cases}
+          \end{align}
+
+
+    \item Verify your results through a plot.\\
+          \solution
+          Already plotted in \autoref{fig:tri_cdf} and \autoref{fig:tri_pdf}
+
+\end{enumerate}
+\section{Maximul Likelihood}
+\begin{enumerate}[label=\thesection.\arabic*
+        ,ref=\thesection.\theenumi]
+    \item Generate
+          \begin{equation}
+              Y = AX+N,
+          \end{equation}
+          where $A = 5 \text{ dB}, X \in \cbrak{1,-1}$,  is Bernoulli and $N \sim \gauss{0}{1}$.
+    \item Plot $Y$.
+    \item Guess how to estimate $X$ from $Y$.
+    \item
+          \label{ml-ch4_sim}
+          Find
+          \begin{equation}
+              P_{e|0} = \pr{\hat{X} = -1|X=1}
+          \end{equation}
+          and
+          \begin{equation}
+              P_{e|1} = \pr{\hat{X} = 1|X=-1}
+          \end{equation}
+          %
+    \item Find $P_e$.
+          %
+    \item
+          Verify by plotting  the theoretical $P_e$.
+\end{enumerate}
+\section{Gaussian to Other}
+\begin{enumerate}[label=\thesection.\arabic*
+        ,ref=\thesection.\theenumi]
+    \item
+          Let $X_1 \sim  \gauss{0}{1}$ and $X_2 \sim  \gauss{0}{1}$. Plot the CDF and PDF of
+          %
+          \begin{equation}
+              V = X_1^2 + X_2^2
+          \end{equation}
+          %
+          %
+          %
+    \item
+          If
+          %
+          \begin{equation}
+              F_{V}(x) =
+              \begin{cases}
+                  1 - e^{-\alpha x} & x \geq 0 \\
+                  0                 & x < 0,
+              \end{cases}
+          \end{equation}
+          %
+          find $\alpha$.
+          %
+    \item
+          \label{ch3_raleigh_sim}
+          Plot the CDF and PDf of
+          %
+          \begin{equation}
+              A = \sqrt{V}
+          \end{equation}
+          %
+\end{enumerate}
+\section{Conditional Probability}
+\begin{enumerate}[label=\thesection.\arabic*
+        ,ref=\thesection.\theenumi]
+    \item
+    \item
+          \label{ch4_sim}
+          Plot
+          \begin{equation}
+              P_e = \pr{\hat{X} = -1|X=1}
+          \end{equation}
+          %
+          for
+          \begin{equation}
+              Y = AX+N,
+          \end{equation}
+          where $A$ is Raleigh with $E\sbrak{A^2} = \gamma, N \sim \gauss{0}{1}, X \in \brak{-1,1}$ for $0 \le \gamma \le 10$ dB.
+          %
+    \item
+          Assuming that $N$ is a constant, find an expression for $P_e$.  Call this $P_e(N)$
+          %
+    \item
+          %
+          \label{ch4_anal}
+          For a function $g$,
+          \begin{equation}
+              E\sbrak{g(X)} = \int_{-\infty}^{\infty}g(x)p_{X}(x)\, dx
+          \end{equation}
+          %
+          Find $P_e = E\sbrak{P_e(N)}$.
+          %
+    \item
+          Plot $P_e$ in problems \ref{ch4_sim} and \ref{ch4_anal} on the same graph w.r.t $\gamma$.  Comment.
+\end{enumerate}
+\section{Two Dimensions}
+Let
+\begin{equation}
+    \mbf{y} = A\mbf{x} + \mbf{n},
+\end{equation}
+where
+\begin{align}
+    x       & \in \brak{\mbf{s}_0,\mbf{s}_1},
+    \mbf{s}_0 =
+    \begin{pmatrix}
+        1
+        \\
+        0
+    \end{pmatrix},
+    \mbf{s}_1 =
+    \begin{pmatrix}
+        0
+        \\
+        1
+    \end{pmatrix}
+    \\
+    \mbf{n} & =
+    \begin{pmatrix}
+        n_1
+        \\
+        n_2
+    \end{pmatrix},
+    n_1,n_2 \sim \gauss{0}{1}.
+\end{align}
+%
+\begin{enumerate}[label=\thesection.\arabic*
+        ,ref=\thesection.\theenumi]
+    %%
+    \item
+          \label{ch5_fsk}
+          Plot
+          %
+          \begin{equation}
+              \mbf{y}|\mbf{s}_0 \text{ and } \mbf{y}|\mbf{s}_1
+          \end{equation}
+          %
+          on the same graph using a scatter plot.
+          %
+    \item
+          For the above problem, find a decision rule for detecting the symbols $\mbf{s}_0 $ and $\mbf{s}_1$.
+          %
+    \item
+          Plot
+          \begin{equation}
+              P_e = \pr{\hat{\mbf{x}} = \mbf{s}_1|\mbf{x} = \mbf{s}_0}
+          \end{equation}
+          with respect to the SNR from 0 to 10 dB.
+          %
+    \item
+          Obtain an expression for $P_e$. Verify this by comparing the theory and simulation plots on the same graph.
+          %
+\end{enumerate}
 
 \end{document}
 

@@ -275,7 +275,7 @@ void x_gen(char *str, int len)
     fclose(fp);
 }
 
-void v_gen(char *str, int len)
+void exp_gen(char *str, int len)
 {
     FILE *fp = fopen(str, "w");
     double v;
@@ -284,6 +284,50 @@ void v_gen(char *str, int len)
         v = -2 * log(1 - rand() * 1.0 / RAND_MAX);
 
         fprintf(fp, "%lf\n", v);
+    }
+    fclose(fp);
+}
+
+
+void y_gen(char *str, int len)
+{
+    FILE *fp = fopen(str, "w");
+    double v;
+    for (int i = 0; i < len; i++)
+    {
+        v = -2 * log(1 - rand() * 1.0 / RAND_MAX);
+
+        fprintf(fp, "%lf\n", v);
+    }
+    fclose(fp);
+}
+
+void chi_gen(char *str, int len)
+{
+    FILE *fp = fopen(str, "w");
+    double v;
+    double x1, x2;
+    for (int i = 0; i < len; i++)
+    {
+        x1 = rand() * 1.0 / RAND_MAX;
+        x2 = rand() * 1.0 / RAND_MAX;
+        v = x1*x1 + x2*x2;
+
+        fprintf(fp, "%lf\n", v);
+    }
+    fclose(fp);
+}
+
+void triangular(char *str, int len)
+{
+    int i;
+    FILE *fp;
+
+    fp = fopen(str,"w");
+    //Generate numbers
+    for (i = 0; i < len; i++)
+    {
+    fprintf(fp,"%lf\n",(double)rand()/RAND_MAX + (double)rand()/RAND_MAX);
     }
     fclose(fp);
 }

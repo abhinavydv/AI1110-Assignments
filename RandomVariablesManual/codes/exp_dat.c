@@ -16,7 +16,7 @@ int main(void) // main function begins
     // x_gen("gau.dat", 1000000);
 
     // generate V
-    v_gen("exp.dat", 1000000);
+    exp_gen("exp.dat", 1000000);
 
     // Mean of uniform
     // printf("uni mean: %lf\n", mean("uni.dat"));
