@@ -573,7 +573,7 @@ wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/Rand
 \end{lstlisting}
           and run it as follows to get \autoref{fig:tri_pdf}
           \begin{lstlisting}
-$ python cdf_plot_tri.py
+$ python pdf_plot_tri.py
 \end{lstlisting}
           \begin{figure}
               \centering
@@ -608,7 +608,8 @@ $ python cdf_plot_tri.py
                   0,                               & x<0          \\
                   \int_0^x tdt,                    & 0\le x \le 1 \\
                   \int_0^1 tdt + \int_1^x (2-t)dt, & 1 < x \le 2  \\
-                  1,                               & x>2          \\
+                  1,   sd
+                                                   & x>2          \\
               \end{cases}                                \\
                      & = \begin{cases}
                   0,                  & x < 0         \\
@@ -658,7 +659,57 @@ $ python cdf_plot_tri.py
           %
           \begin{equation}
               V = X_1^2 + X_2^2
-          \end{equation}
+          \end{equation}\\
+          \solution
+          \begin{itemize}
+              \item \textbf{Generate data}\\
+                    Download the following files.
+                    \begin{lstlisting}
+  wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+  wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/chi_dat.c
+          \end{lstlisting}
+
+                    Compile and execute the program as follows to generate data for the distribution
+                    \begin{lstlisting}
+  $ gcc chi_dat.c -lm -o chi_dat
+  $ ./chi_dat
+          \end{lstlisting}
+
+              \item \textbf{Plot CDF:}\\
+                    To plot the CDF download the following code
+                    \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/cdf_plot_chi.py
+\end{lstlisting}
+                    and run it as follows to get \autoref{fig:chi_cdf}
+                    \begin{lstlisting}
+$ python cdf_plot_chi.py
+\end{lstlisting}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[width=\columnwidth]{./figs/chi_cdf}
+                        \caption{The CDF of $V$}
+                        \label{fig:chi_cdf}
+                    \end{figure}
+
+              \item \textbf{plot PDF}
+                    To plot the PDF download the following code
+                    \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/pdf_plot_chi.py
+\end{lstlisting}
+                    and run it as follows to get \autoref{fig:chi_pdf}
+                    \begin{lstlisting}
+$ python pdf_plot_chi.py
+\end{lstlisting}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[width=\columnwidth]{./figs/chi_pdf}
+                        \caption{The PDF of $V$}
+                        \label{fig:chi_pdf}
+                    \end{figure}
+
+          \end{itemize}
+
+
           %
           %
           %
@@ -673,7 +724,41 @@ $ python cdf_plot_tri.py
               \end{cases}
           \end{equation}
           %
-          find $\alpha$.
+          find $\alpha$.\\
+          \solution
+          Since $X_1$ and $X_2$ are i.i.d Normal Random Variables\\
+          Let $X_1=R\sin\theta$ and $X_2=R\cos\theta$\\
+          \begin{align}
+              \intertext{Jacobian matrix is  given as follows}
+              J                        & = \myvec{\frac{\delta x_1}{\delta r}                      & \frac{\delta x_1}{\delta \theta} \\ \frac{\delta x_2}{\delta r} & \frac{\delta x_2}{\delta \theta}}\\
+              J                        & = \myvec{\cos\theta                                       & -R\sin\theta                     \\ \sin\theta & R\cos\theta}\\
+              |J|                      & = R
+              \intertext{Also, }
+              \label{eq:frtheta}
+              f_{r, \theta}(r, \theta) & = |J|f_{X_1, X_2}(x_1, x_2)                                                                  \\
+              \intertext{Since, $X_1$ and $X_2$ are independent,}
+              f_{X_1, X_2}(x_1, x_2)   & = f_{X_1}(x_1)f_{X_2}(x_2)                                                                   \\                                  \\
+                                       & =\frac{1}{2\pi} e^{-\frac{(x_1^2+x_2^2)}{2}}                                                 \\
+                                       & = \frac{1}{2\pi} e^{-\frac{r^2}{2}}
+              \intertext{Put in \autoref{eq:frtheta}, we get,}
+              f_{R, \theta}(r, \theta) & = \frac{r}{2\pi} e^{-\frac{r^2}{2}}
+              \intertext{Now,}
+              F_R(r)                   & = \int_0^{2\pi} f_{R, \theta}(r, \theta)                                                     \\
+                                       & = \int_0^{2\pi} \frac{r}{2\pi} e^{-\frac{r^2}{2}} d\theta                                    \\
+                                       & = r e^{-\frac{r^2}{2}}                                                                       \\
+              \intertext{Since,}
+              V                        & = X_1^2 + X_2^2                                                                              \\
+                                       & = R^2
+              \intertext{Now,}
+              F_V(x)                   & = \pr{V\le x}                                                                                \\
+                                       & = \pr{R^2 \le x}                                                                             \\
+                                       & = \pr{R \le \sqrt{x}}                                                                        \\
+              F_V(x)                   & = F_R(\sqrt{x})                                                                              \\
+                                       & =\begin{cases}
+                  0, & x < 0 \\
+                  \sqrt{x} e^{-\frac{x}{2}},  otherwise
+              \end{cases}
+          \end{align}
           %
     \item
           \label{ch3_raleigh_sim}
@@ -682,6 +767,56 @@ $ python cdf_plot_tri.py
           \begin{equation}
               A = \sqrt{V}
           \end{equation}
+          \solution
+          \begin{itemize}
+              \item \textbf{Generate data}\\
+                    Download the following files.
+                    \begin{lstlisting}
+  wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+  wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/rayleigh_dat.c
+          \end{lstlisting}
+
+                    Compile and execute the program as follows to generate data for the distribution
+                    \begin{lstlisting}
+  $ gcc rayleigh_dat.c -lm -o rayleigh_dat
+  $ ./rayleigh_dat
+          \end{lstlisting}
+
+              \item \textbf{Plot CDF:}\\
+                    To plot the CDF download the following code
+                    \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/cdf_plot_rayleigh.py
+\end{lstlisting}
+                    and run it as follows to get \autoref{fig:rayleigh_cdf}
+                    \begin{lstlisting}
+$ python cdf_plot_rayleigh.py
+\end{lstlisting}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[width=\columnwidth]{./figs/rayleigh_cdf}
+                        \caption{The CDF of $\sqrt{V}$}
+                        \label{fig:rayleigh_cdf}
+                    \end{figure}
+
+              \item \textbf{plot PDF}
+                    To plot the PDF download the following code
+                    \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/pdf_plot_rayleigh.py
+\end{lstlisting}
+                    and run it as follows to get \autoref{fig:rayleigh_pdf}
+                    \begin{lstlisting}
+$ python pdf_plot_rayleigh.py
+\end{lstlisting}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[width=\columnwidth]{./figs/rayleigh_pdf}
+                        \caption{The PDF of $\sqrt{V}$}
+                        \label{fig:rayleigh_pdf}
+                    \end{figure}
+
+          \end{itemize}
+
+
           %
 \end{enumerate}
 \section{Conditional Probability}

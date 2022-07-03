@@ -12,7 +12,9 @@ from funcs import qfunc
 
 
 def chi_cdf(x):
-    return np.sqrt(x)*np.exp(-x/2)
+    if x < 0:
+        return 0.0
+    return 1-np.exp(-x/2)
 
 
 x = np.linspace(-4, 4, 30)  # points on the x axis

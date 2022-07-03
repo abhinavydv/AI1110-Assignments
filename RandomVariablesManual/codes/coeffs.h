@@ -288,7 +288,6 @@ void exp_gen(char *str, int len)
     fclose(fp);
 }
 
-
 void y_gen(char *str, int len)
 {
     FILE *fp = fopen(str, "w");
@@ -305,13 +304,26 @@ void y_gen(char *str, int len)
 void chi_gen(char *str, int len)
 {
     FILE *fp = fopen(str, "w");
+    int j;
     double v;
     double x1, x2;
+
     for (int i = 0; i < len; i++)
     {
-        x1 = rand() * 1.0 / RAND_MAX;
-        x2 = rand() * 1.0 / RAND_MAX;
-        v = x1*x1 + x2*x2;
+        x1 = 0;
+        for (j = 0; j < 12; j++)
+        {
+            x1 += (double)rand() / RAND_MAX;
+        }
+        x1 -= 6;
+        x2 = 0;
+        for (j = 0; j < 12; j++)
+        {
+            x2 += (double)rand() / RAND_MAX;
+        }
+        x2 -= 6;
+
+        v = x1 * x1 + x2 * x2;
 
         fprintf(fp, "%lf\n", v);
     }
@@ -323,11 +335,40 @@ void triangular(char *str, int len)
     int i;
     FILE *fp;
 
-    fp = fopen(str,"w");
-    //Generate numbers
+    fp = fopen(str, "w");
+    // Generate numbers
     for (i = 0; i < len; i++)
     {
-    fprintf(fp,"%lf\n",(double)rand()/RAND_MAX + (double)rand()/RAND_MAX);
+        fprintf(fp, "%lf\n", (double)rand() / RAND_MAX + (double)rand() / RAND_MAX);
+    }
+    fclose(fp);
+}
+
+void rayleigh(char *str, int len)
+{
+    FILE *fp = fopen(str, "w");
+    int j;
+    double v;
+    double x1, x2;
+
+    for (int i = 0; i < len; i++)
+    {
+        x1 = 0;
+        for (j = 0; j < 12; j++)
+        {
+            x1 += (double)rand() / RAND_MAX;
+        }
+        x1 -= 6;
+        x2 = 0;
+        for (j = 0; j < 12; j++)
+        {
+            x2 += (double)rand() / RAND_MAX;
+        }
+        x2 -= 6;
+
+        v = x1 * x1 + x2 * x2;
+
+        fprintf(fp, "%lf\n", sqrt(v));
     }
     fclose(fp);
 }
