@@ -372,3 +372,17 @@ void rayleigh(char *str, int len)
     }
     fclose(fp);
 }
+
+void bernauli(char *str, int len)
+{
+    int i;
+    FILE *fp;
+
+    fp = fopen(str, "w");
+    // Generate numbers
+    for (i = 0; i < len; i++)
+    {
+        fprintf(fp, "%lf\n", );
+    }
+    fclose(fp);
+}

@@ -628,12 +628,13 @@ $ python pdf_plot_tri.py
 \section{Maximul Likelihood}
 \begin{enumerate}[label=\thesection.\arabic*
         ,ref=\thesection.\theenumi]
+    \item Generate equiprobable $X \in \cbrak{1,-1}$.
     \item Generate
           \begin{equation}
               Y = AX+N,
           \end{equation}
-          where $A = 5 \text{ dB}, X \in \cbrak{1,-1}$,  is Bernoulli and $N \sim \gauss{0}{1}$.
-    \item Plot $Y$.
+          where $A = 5$ dB,  and $N \sim \gauss{0}{1}$.
+    \item Plot $Y$ using a scatter plot.
     \item Guess how to estimate $X$ from $Y$.
     \item
           \label{ml-ch4_sim}
@@ -646,10 +647,17 @@ $ python pdf_plot_tri.py
               P_{e|1} = \pr{\hat{X} = 1|X=-1}
           \end{equation}
           %
-    \item Find $P_e$.
+    \item Find $P_e$ assuming that $X$ has equiprobable symbols.
           %
     \item
-          Verify by plotting  the theoretical $P_e$.
+          Verify by plotting  the theoretical $P_e$ with respect to $A$ from 0 to 10 dB.
+          %
+    \item Now, consider a threshold $\delta$  while estimating $X$ from $Y$. Find the value of $\delta$ that maximizes the theoretical $P_e$.
+    \item Repeat the above exercise when
+          \begin{align}
+              p_{X}(0) = p
+          \end{align}
+    \item Repeat the above exercise using the MAP criterion.
 \end{enumerate}
 \section{Gaussian to Other}
 \begin{enumerate}[label=\thesection.\arabic*
@@ -743,9 +751,12 @@ $ python pdf_plot_chi.py
               \intertext{Put in \autoref{eq:frtheta}, we get,}
               f_{R, \theta}(r, \theta) & = \frac{r}{2\pi} e^{-\frac{r^2}{2}}
               \intertext{Now,}
-              F_R(r)                   & = \int_0^{2\pi} f_{R, \theta}(r, \theta)                                                     \\
+              f_R(r)                   & = \int_0^{2\pi} f_{R, \theta}(r, \theta)                                                     \\
                                        & = \int_0^{2\pi} \frac{r}{2\pi} e^{-\frac{r^2}{2}} d\theta                                    \\
                                        & = r e^{-\frac{r^2}{2}}                                                                       \\
+              \intertext{CDF is given by,}
+              F_R(r)                   & = \int_0^r re^{-\frac{r^2}{2}}  dr                                                           \\
+                                       & = 1-e^{-\frac{r^2}{2}}
               \intertext{Since,}
               V                        & = X_1^2 + X_2^2                                                                              \\
                                        & = R^2
@@ -756,8 +767,10 @@ $ python pdf_plot_chi.py
               F_V(x)                   & = F_R(\sqrt{x})                                                                              \\
                                        & =\begin{cases}
                   0, & x < 0 \\
-                  \sqrt{x} e^{-\frac{x}{2}},  otherwise
+                  1 - e^{-\frac{x}{2}},  otherwise
               \end{cases}
+              \intertext{Therefore,}
+              \alpha                   & = \frac{1}{2}
           \end{align}
           %
     \item
