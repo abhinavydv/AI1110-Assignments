@@ -629,13 +629,60 @@ $ python pdf_plot_tri.py
 \begin{enumerate}[label=\thesection.\arabic*
         ,ref=\thesection.\theenumi]
     \item Generate equiprobable $X \in \cbrak{1,-1}$.
+          \solution
+          Download the following files.
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/bernoulli_dat.c
+\end{lstlisting}
+
+          Compile and execute the program as follows.
+          \begin{lstlisting}
+$ gcc bernoulli_dat.c -lm -o bernoulli_dat
+$ ./bernoulli_dat
+    \end{lstlisting}
+
+
     \item Generate
           \begin{equation}
               Y = AX+N,
           \end{equation}
-          where $A = 5$ dB,  and $N \sim \gauss{0}{1}$.
-    \item Plot $Y$ using a scatter plot.
-    \item Guess how to estimate $X$ from $Y$.
+          where $A = 5$ dB,  and $N \sim \gauss{0}{1}$.\\
+          \solution
+          Download the following files.
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/coeffs.h
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/maximul_dat.c
+\end{lstlisting}
+
+          Compile and execute the program as follows.
+          \begin{lstlisting}
+$ gcc maximul_dat.c -lm -o maximul_dat
+$ ./maximul_dat
+    \end{lstlisting}
+
+
+    \item Plot $Y$ using a scatter plot.\\
+          \solution  Download the following code
+          \begin{lstlisting}
+wget https://raw.githubusercontent.com/abhinavydv/AI1110-Assignments/master/RandomVariablesManual/codes/scatter_plot_maximul.py
+\end{lstlisting}
+          and run it as follows to get \autoref{fig:scatter_plot_maximul}
+          \begin{lstlisting}
+$ python scatter_plot_maximul.py
+\end{lstlisting}
+          \begin{figure}
+              \centering
+              \includegraphics[width=\columnwidth]{./figs/maximul_scatter.png}
+              \caption{The PDF of $T$}
+              \label{fig:scatter_plot_maximul}
+          \end{figure}
+
+
+    \item Guess how to estimate $X$ from $Y$.\\
+          \solution
+
+
     \item
           \label{ml-ch4_sim}
           Find
@@ -739,8 +786,8 @@ $ python pdf_plot_chi.py
           \begin{align}
               \intertext{Jacobian matrix is  given as follows}
               J                        & = \myvec{\frac{\delta x_1}{\delta r}                      & \frac{\delta x_1}{\delta \theta} \\ \frac{\delta x_2}{\delta r} & \frac{\delta x_2}{\delta \theta}}\\
-              J                        & = \myvec{\cos\theta                                       & -R\sin\theta                     \\ \sin\theta & R\cos\theta}\\
-              |J|                      & = R
+              J                        & = \myvec{\cos\theta                                       & -r\sin\theta                     \\ \sin\theta & r\cos\theta}\\
+              |J|                      & = r
               \intertext{Also, }
               \label{eq:frtheta}
               f_{r, \theta}(r, \theta) & = |J|f_{X_1, X_2}(x_1, x_2)                                                                  \\
