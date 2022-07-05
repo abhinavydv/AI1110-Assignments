@@ -373,16 +373,84 @@ void rayleigh(char *str, int len)
     fclose(fp);
 }
 
-void bernauli(char *str, int len)
+void bernoulli(char *str, int len)
 {
-    int i;
+    int i, j;
     FILE *fp;
 
     fp = fopen(str, "w");
     // Generate numbers
     for (i = 0; i < len; i++)
     {
-        fprintf(fp, "%lf\n", );
+        j = rand() - RAND_MAX / 2;
+        fprintf(fp, "%d\n", j < 0 ? -1 : 1);
     }
     fclose(fp);
+}
+
+void maximul(char *str, double a)
+{
+    double i = 0;
+    FILE *fp, *fp2, *fp3;
+    double temp = 0.0, x;
+    fp = fopen("gau.dat", "r");
+    fp2 = fopen(str, "w");
+    fp3 = fopen("bernoulli.dat", "r");
+    while (fscanf(fp, "%lf", &x) != EOF)
+    {
+        fscanf(fp3, "%lf", &i);
+        fprintf(fp2, "%lf\n", a * i + x);
+    }
+
+    fclose(fp);
+    fclose(fp2);
+    fclose(fp3);
+
+    return;
+}
+
+void predict_x(double y)
+{
+    if (y < 0)
+        return -1;
+    return 1;
+}
+
+double maximul_err(int x)
+{
+    FILE *fp, *fp2;
+    fp = fopen("maximul.dat", "r");
+    fp2 = fopen("bernoulli.dat", "r");
+    double y;
+    int i;
+    int num = 0;
+    int den = 0;
+
+    while (fscanf(fp, "%lf", &y) != EOF){
+        fscanf(fp2, "%d", &i);
+
+        if (x==i){
+            den++;
+            if (predict_x(y) == -x)
+                num++;
+        }
+        
+    }
+    return num*1.0/den;
+}
+
+
+void maximul_err_graph(char *str){
+    FILE *fp, *fp2;
+    // fp = fopen("gau.dat","r");
+    fp2 = fopen(str, "w");
+    double a = 0.1;
+    double temp;
+    for(int i=1;i<=10; i++){
+        maximul("maximul.dat", a*i);
+        temp = (maximul_err(1)+maximul_err(-1))/2;
+        fprintf(fp2,"%lf\n",temp);
+    }
+
+    fclose(fp2);
 }
